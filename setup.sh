@@ -11,19 +11,19 @@ fi
 
 pkill -f agent.py
 
-cat > /usr/src/monitoring-agent-update.sh <<EOFMARKER7
+cat > /usr/src/tagent/tagent-update.sh <<EOFMARKER7
 #!/bin/bash
 pkill -f agent.py
-cd /usr/src/monitoring-agent/
+cd /usr/src/tagent/
 git reset --hard
 git pull https://github.com/mercel92/monitoring-agent.git
 EOFMARKER7
 
 cd /usr/src/
-git clone https://github.com/mercel92/monitoring-agent.git monitoring-agent
-chmod u+x /usr/src/monitoring-agent-update.sh
-echo '@reboot python /usr/src/monitoring-agent/agent.py' >> /var/spool/cron/root
-#echo '22 13 * * * sh /usr/src/monitoring-agent-update.sh' >> /var/spool/cron/root
-echo 'nohup python /usr/src/monitoring-agent/agent.py' >> /home/avni/monitoring-agent-update.sh
+git clone https://github.com/mercel92/monitoring-agent.git tagent
+chmod u+x /usr/src/tagent/monitoring-agent-update.sh
+echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/root
+#echo '22 13 * * * sh /usr/src/tagent-update.sh' >> /var/spool/cron/root
+echo 'nohup python /usr/src/tagent/agent.py' >> /usr/src/tagent-update.sh
 
-nohup python /usr/src/monitoring-agent/agent.py
+nohup python /usr/src/tagent/agent.py
