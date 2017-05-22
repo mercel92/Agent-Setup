@@ -1,2 +1,2 @@
 # setup
-auto install &amp; update for monitoring boot
+auto install &amp; update for monitoring bot
