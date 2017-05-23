@@ -14,7 +14,7 @@ fi
 cd /usr/src/
 git clone https://github.com/mercel92/monitoring-agent.git tagent
 echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/root
-#echo '22 13 * * * sh /usr/src/tagent-update.sh' >> /var/spool/cron/root
+echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/root
 
 cat > /usr/src/tagent/tagent-update.sh <<EOFMARKER7
 #!/bin/bash
@@ -28,3 +28,5 @@ chmod u+x /usr/src/tagent/tagent-update.sh
 echo 'nohup python /usr/src/tagent/agent.py' >> /usr/src/tagent/tagent-update.sh
 mv /usr/src/setup/server_ip.txt /usr/src/tagent/
 nohup python /usr/src/tagent/agent.py
+nohup python /usr/src/tagent/update.py
+
