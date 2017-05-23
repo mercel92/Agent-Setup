@@ -21,7 +21,7 @@ cat > /usr/src/tagent/tagent-update.sh <<EOFMARKER7
 pkill -f agent.py
 cd /usr/src/tagent/
 git reset --hard
-git pull https://github.com/mercel92/monitoring-agent.git
+git pull
 EOFMARKER7
 
 chmod u+x /usr/src/tagent/tagent-update.sh
