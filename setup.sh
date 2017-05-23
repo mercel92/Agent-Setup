@@ -1,6 +1,7 @@
 #!/bin/bash
 yum -y update
 yum -y install python python-pip python-devel
+pip install --upgrade pip
 
 rm -rf /usr/src/tagent/
 pkill -f agent.py
