@@ -23,15 +23,15 @@ echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/root
 
 cat > /usr/src/tagent/tagent-update.sh <<EOFMARKER7
 #!/bin/bash
-pkill -f agent.py
-pkill -f update.py
 cd /usr/src/tagent/
 git reset --hard
 git pull
+pkill -f agent.py
+pkill -f update.py
 EOFMARKER7
 
 chmod u+x /usr/src/tagent/tagent-update.sh
-echo 'nohup python /usr/src/tagent/agent.py && nohup python /usr/src/tagent/update.py >/dev/null 2>&1 &' >> /usr/src/tagent/tagent-update.sh
+echo 'nohup python /usr/src/tagent/update.py && nohup python /usr/src/tagent/agent.py >/dev/null 2>&1 &' >> /usr/src/tagent/tagent-update.sh
 
 mv /usr/src/server_ip.txt /usr/src/tagent/
 nohup python /usr/src/tagent/agent.py && nohup python /usr/src/tagent/update.py >/dev/null 2>&1 &
