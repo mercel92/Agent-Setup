@@ -24,7 +24,7 @@ git reset --hard
 git pull https://github.com/mercel92/monitoring-agent.git
 EOFMARKER7
 
-chmod u+x /usr/src/tagent/tagent-agent-update.sh
+chmod u+x /usr/src/tagent/tagent-update.sh
 echo 'nohup python /usr/src/tagent/agent.py' >> /usr/src/tagent/tagent-update.sh
 mv /usr/src/setup/server_ip.txt /usr/src/tagent/
 nohup python /usr/src/tagent/agent.py
