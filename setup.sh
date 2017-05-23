@@ -1,4 +1,7 @@
-#!/bin/bash 
+#!/bin/bash
+rm -rf /usr/src/tagent/
+pkill -f agent.py
+
 ip=$1
 server_ip="server_ip.txt"
 
@@ -8,9 +11,11 @@ else
     echo "argument error"
 fi
 
+cd /usr/src/
+git clone https://github.com/mercel92/monitoring-agent.git tagent
+echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/root
+#echo '22 13 * * * sh /usr/src/tagent-update.sh' >> /var/spool/cron/root
 
-pkill -f agent.py
-rm -rf /usr/src/setup/ /usr/src/tagent/
 cat > /usr/src/tagent/tagent-update.sh <<EOFMARKER7
 #!/bin/bash
 pkill -f agent.py
@@ -19,11 +24,7 @@ git reset --hard
 git pull https://github.com/mercel92/monitoring-agent.git
 EOFMARKER7
 
-cd /usr/src/
-git clone https://github.com/mercel92/monitoring-agent.git tagent
-chmod u+x /usr/src/tagent/monitoring-agent-update.sh
-echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/root
-#echo '22 13 * * * sh /usr/src/tagent-update.sh' >> /var/spool/cron/root
-echo 'nohup python /usr/src/tagent/agent.py' >> /usr/src/tagent-update.sh
+chmod u+x /usr/src/tagent/tagent-agent-update.sh
+echo 'nohup python /usr/src/tagent/agent.py' >> /usr/src/tagent/tagent-update.sh
 mv /usr/src/setup/server_ip.txt /usr/src/tagent/
 nohup python /usr/src/tagent/agent.py
