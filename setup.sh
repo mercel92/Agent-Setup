@@ -27,7 +27,7 @@ cd /usr/src/tagent/
 git reset --hard
 git pull
 pkill -f agent.py
-#pkill -f update.py
+pkill -f update.py
 EOFMARKER7
 
 chmod u+x /usr/src/tagent/tagent-update.sh
