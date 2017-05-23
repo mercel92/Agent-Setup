@@ -24,7 +24,7 @@ echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/root
 cat > /usr/src/tagent/tagent-update.sh <<EOFMARKER7
 #!/bin/bash
 pkill -f agent.py
-#pkill -f update.py
+pkill -f update.py
 cd /usr/src/tagent/
 git reset --hard
 git pull
