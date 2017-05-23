@@ -31,7 +31,7 @@ git pull
 EOFMARKER7
 
 chmod u+x /usr/src/tagent/tagent-update.sh
-echo 'nohup python /usr/src/tagent/agent.py && nohup python /usr/src/tagent/update.py >/dev/null 2>&1' >> /usr/src/tagent/tagent-update.sh
+echo 'nohup python /usr/src/tagent/agent.py && nohup python /usr/src/tagent/update.py >/dev/null 2>&1 &' >> /usr/src/tagent/tagent-update.sh
 
 mv /usr/src/server_ip.txt /usr/src/tagent/
-nohup python /usr/src/tagent/agent.py && nohup python /usr/src/tagent/update.py >/dev/null 2>&1
+nohup python /usr/src/tagent/agent.py && nohup python /usr/src/tagent/update.py >/dev/null 2>&1 &
