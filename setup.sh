@@ -1,6 +1,6 @@
 #!/bin/bash
 yum -y update
-yum -y install python python-pip python-devel
+yum -y install gcc python python-pip python-devel
 pip install --upgrade pip
 
 rm -rf /usr/src/tagent/
