@@ -1,8 +1,8 @@
 #!/bin/bash
 
-UBUNTU=0
+OS=cat /etc/os-release | grep -m 1 "ID"
 
-if [ $UBUNTU== '1' ]; then
+if [ $OS== 'ubuntu' ]; then
 apt-get -y update
 apt-get -y install python python-pip
 echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/crontabs/root
