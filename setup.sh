@@ -22,8 +22,8 @@ pkill -f update.py
 ip=$1
 server_ip="server_ip.txt"
 
-if [[ -n "$ip" ]]; then
-    echo "$1" >> ${server_ip}
+if [ -n "$ip" ]; then
+echo "$1" >> ${server_ip}
 else
     echo "argument error"
 fi
