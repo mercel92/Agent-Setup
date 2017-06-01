@@ -1,21 +1,19 @@
 #!/bin/bash
 
-OS=cat /etc/os-release | grep -m 1 "ID"
 
-if [ $OS== 'ubuntu' ]; then
-apt-get -y update
-apt-get -y install python python-pip
-echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/crontabs/root
-echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/crontabs/root
-else
+value=$(cat /etc/os-release | grep -m 1 "ID")
+if [ $value== 'ID=centos' ]; then
 yum -y update
 yum -y install gcc python python-pip python-devel
 pip install --upgrade pip
 echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/root
 echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/root
+else
+apt-get -y update
+apt-get -y install python python-pip
+echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/crontabs/root
+echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/crontabs/root
 fi
-
-
 
 rm -rf /usr/src/tagent/
 pkill -f agent.py
