@@ -2,7 +2,7 @@
 
 
 value=$(cat /etc/os-release | grep -m 1 "ID")
-if [ $value= 'ID="centos"' ]; then
+if [ $value == 'ID="centos"' ]; then
 yum -y update
 yum -y install gcc python python-pip python-devel
 pip install --upgrade pip
