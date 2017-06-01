@@ -1,7 +1,21 @@
 #!/bin/bash
+
+UBUNTU=0
+
+if [ $UBUNTU== '1' ]; then
+apt-get -y update
+apt-get -y install python python-pip
+echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/crontabs/root
+echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/crontabs/root
+else
 yum -y update
 yum -y install gcc python python-pip python-devel
 pip install --upgrade pip
+echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/root
+echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/root
+fi
+
+
 
 rm -rf /usr/src/tagent/
 pkill -f agent.py
@@ -18,8 +32,7 @@ fi
 
 cd /usr/src/
 git clone https://github.com/mercel92/monitoring-agent.git tagent
-echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/root
-echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/root
+
 
 cat > /usr/src/tagent/tagent-update.sh <<EOFMARKER7
 #!/bin/bash
