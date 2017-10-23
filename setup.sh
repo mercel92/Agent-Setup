@@ -6,6 +6,7 @@ if [ $value == 'ID="centos"' ]; then
 yum -y update
 yum -y install gcc python python-pip python-devel
 pip install --upgrade pip
+pip install psutil
 echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/root
 echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/root
 else
