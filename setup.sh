@@ -12,6 +12,7 @@ echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/root
 else
 apt-get -y update
 apt-get -y install python python-pip
+pip install psutil
 echo '@reboot python /usr/src/tagent/agent.py' >> /var/spool/cron/crontabs/root
 echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/crontabs/root
 fi
