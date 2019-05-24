@@ -18,7 +18,7 @@ echo '@reboot python /usr/src/tagent/update.py' >> /var/spool/cron/crontabs/root
 fi
 
 rm -rf /usr/src/tagent/
-kill -9 `pidof python /usr/src/tagent/update.py`
+kill -9 `pidof python /usr/src/tagent/agent.py`
 kill -9 `pidof python /usr/src/tagent/update.py`
 
 ip=$1
@@ -39,7 +39,7 @@ cat > /usr/src/tagent/tagent-update.sh <<EOFMARKER7
 cd /usr/src/tagent/
 git reset --hard
 git pull
-kill -9 `pidof python /usr/src/tagent/update.py`
+kill -9 `pidof python /usr/src/tagent/agent.py`
 kill -9 `pidof python /usr/src/tagent/update.py`
 EOFMARKER7
 
