@@ -39,8 +39,8 @@ cat > /usr/src/tagent/tagent-update.sh <<EOFMARKER7
 cd /usr/src/tagent/
 git reset --hard
 git pull
-kill -9 `pidof python /usr/src/tagent/agent.py`
-kill -9 `pidof python /usr/src/tagent/update.py`
+kill -9 \`pidof python /usr/src/tagent/agent.py\`
+kill -9 \`pidof python /usr/src/tagent/update.py\`
 EOFMARKER7
 
 chmod u+x /usr/src/tagent/tagent-update.sh
