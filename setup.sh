@@ -20,6 +20,8 @@ fi
 rm -rf /usr/src/tagent/
 kill -9 `pidof python /usr/src/tagent/agent.py`
 kill -9 `pidof python /usr/src/tagent/update.py`
+pkill -f update.py
+pkill -f agent.py
 
 ip=$1
 server_ip="server_ip.txt"
