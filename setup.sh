@@ -43,6 +43,8 @@ git reset --hard
 git pull
 kill -9 \`pidof python /usr/src/tagent/agent.py\`
 kill -9 \`pidof python /usr/src/tagent/update.py\`
+pkill -f update.py
+pkill -f agent.py
 EOFMARKER7
 
 chmod u+x /usr/src/tagent/tagent-update.sh
